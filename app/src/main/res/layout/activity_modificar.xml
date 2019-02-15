@@ -6,13 +6,30 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".BorrarActividad">
+    tools:context=".ModificarActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Borrar Uusario" />
+        android:text="Modifica un Alumno" />
 
+    <Spinner
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/UsuarioSpinner"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/edNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:hint="Nombre"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/edCodigo"
@@ -30,8 +47,8 @@
         android:text="finalizar" />
 
     <Button
-        android:id="@+id/btnAcBorrar"
+        android:id="@+id/btnAcModificar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Borrar" />
+        android:text="Modificar" />
 </LinearLayout>

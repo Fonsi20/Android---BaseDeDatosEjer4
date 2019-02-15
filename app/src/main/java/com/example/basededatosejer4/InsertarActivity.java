@@ -36,9 +36,9 @@ public class InsertarActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if (edNombre.equals("")) {
+                if (edNombre.getText().toString().equals("")) {
                     edNombre.setHint("Introduce un nombre");
-                } else if (edCodigo.equals("")) {
+                } else if (edCodigo.getText().toString().equals("")) {
                     edCodigo.setHint("Introduce un codigo");
                 } else {
                     BDusuarios.execSQL("Insert into tUsuario (codigo,nombre) values ("+Integer.parseInt(edCodigo.getText().toString())+",'"+edNombre.getText().toString()+"')");

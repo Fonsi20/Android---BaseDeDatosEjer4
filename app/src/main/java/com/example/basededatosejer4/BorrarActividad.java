@@ -12,16 +12,16 @@ public class BorrarActividad extends AppCompatActivity {
     private String BDname;
     private int BDversion;
     private SQLiteDatabase BDusuarios;
-    private Button btnFin, btnIns;
+    private Button btnFin, btnBorr;
     private EditText edCodigo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_insertar);
+        setContentView(R.layout.activity_borrar_actividad);
 
         btnFin = findViewById(R.id.btnAcFin);
-        btnIns = findViewById(R.id.btnAcInsert);
+        btnBorr = findViewById(R.id.btnAcBorrar);
         edCodigo = findViewById(R.id.edCodigo);
 
         BDname = "BDusuarios";
@@ -31,14 +31,14 @@ public class BorrarActividad extends AppCompatActivity {
 
         BDusuarios = bdhelper.getWritableDatabase();
 
-        btnIns.setOnClickListener(new View.OnClickListener() {
+        btnBorr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                if (edCodigo.equals("")) {
+                if (edCodigo.getText().toString().equals("")) {
                     edCodigo.setHint("Introduce un codigo");
                 } else {
-                    BDusuarios.execSQL("Delete from tUsuarios where codigo = " + edCodigo.getText().toString() + ";");
+                    BDusuarios.execSQL("Delete from tUsuario where codigo = " + edCodigo.getText().toString() + ";");
                 }
             }
         });
