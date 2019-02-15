@@ -35,7 +35,8 @@ public class MainActivity extends AppCompatActivity {
         btnBor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent i = new Intent(MainActivity.this, BorrarActividad.class);
+                startActivity(i);
             }
         });
 

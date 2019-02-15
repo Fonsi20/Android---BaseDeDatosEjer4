@@ -7,13 +7,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class InsertarActivity extends AppCompatActivity {
+public class BorrarActividad extends AppCompatActivity {
 
     private String BDname;
     private int BDversion;
     private SQLiteDatabase BDusuarios;
     private Button btnFin, btnIns;
-    private EditText edNombre, edCodigo;
+    private EditText edCodigo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +22,6 @@ public class InsertarActivity extends AppCompatActivity {
 
         btnFin = findViewById(R.id.btnAcFin);
         btnIns = findViewById(R.id.btnAcInsert);
-        edNombre = findViewById(R.id.edNombre);
         edCodigo = findViewById(R.id.edCodigo);
 
         BDname = "BDusuarios";
@@ -36,12 +35,10 @@ public class InsertarActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if (edNombre.equals("")) {
-                    edNombre.setHint("Introduce un nombre");
-                } else if (edCodigo.equals("")) {
+                if (edCodigo.equals("")) {
                     edCodigo.setHint("Introduce un codigo");
                 } else {
-                    BDusuarios.execSQL("Insert into tUsuario (codigo,nombre) values ("+Integer.parseInt(edCodigo.getText().toString())+",'"+edNombre.getText().toString()+"')");
+                    BDusuarios.execSQL("Delete from tUsuarios where codigo = " + edCodigo.getText().toString() + ";");
                 }
             }
         });
@@ -53,6 +50,5 @@ public class InsertarActivity extends AppCompatActivity {
                 finish();
             }
         });
-
     }
 }
