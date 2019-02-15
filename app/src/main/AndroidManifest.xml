@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ModificarActivity"></activity>
+        <activity android:name=".MuestraVariosActivity"></activity>
+        <activity android:name=".MuestraUnoActivity" />
+        <activity android:name=".ModificarActivity" />
         <activity android:name=".BorrarActividad" />
         <activity android:name=".InsertarActivity" />
         <activity android:name=".MainActivity">

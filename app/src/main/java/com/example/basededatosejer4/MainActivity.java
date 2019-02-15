@@ -52,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
         btnMosUno.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent i = new Intent(MainActivity.this, MuestraUnoActivity.class);
+                startActivity(i);
             }
         });
 
@@ -60,7 +61,8 @@ public class MainActivity extends AppCompatActivity {
         btnMosVar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent i = new Intent(MainActivity.this, MuestraVariosActivity.class);
+                startActivity(i);
             }
         });
 

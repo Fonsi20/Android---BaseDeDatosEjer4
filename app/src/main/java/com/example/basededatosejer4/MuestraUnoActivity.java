@@ -13,13 +13,12 @@ import android.widget.Spinner;
 
 import java.util.ArrayList;
 
-public class ModificarActivity extends AppCompatActivity {
+public class MuestraUnoActivity extends AppCompatActivity {
 
     private String BDname;
     private int BDversion;
     private SQLiteDatabase BDusuarios;
-    private Button btnFin, btnMod;
-    private EditText edCodigo, edNombre;
+    private Button btnFin;
     private Spinner spUsers;
 
     ArrayList<String> listaPersonas;
@@ -28,12 +27,9 @@ public class ModificarActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_modificar);
+        setContentView(R.layout.activity_muestra_uno);
 
         btnFin = findViewById(R.id.btnAcFin);
-        btnMod = findViewById(R.id.btnAcModificar);
-        edCodigo = findViewById(R.id.edCodigo);
-        edNombre = findViewById(R.id.edNombre);
         spUsers = findViewById(R.id.UsuarioSpinner);
 
         BDname = "BDusuarios";
@@ -46,23 +42,6 @@ public class ModificarActivity extends AppCompatActivity {
         ArrayAdapter<CharSequence> adaptador = new ArrayAdapter
                 (this, android.R.layout.simple_spinner_item, listaPersonas);
         spUsers.setAdapter(adaptador);
-
-        btnMod.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if (edNombre.getText().toString().equals("")) {
-                    edNombre.setHint("Introduce un nombre");
-                } else if (edCodigo.getText().toString().equals("")) {
-                    edCodigo.setHint("Introduce un codigo");
-                } else {
-                    String text = spUsers.getSelectedItem().toString();
-                    String[] codigo = text.split("(?=\\s)");
-                    Log.i("spinner", edNombre.getText().toString());
-                    BDusuarios.execSQL("UPDATE tUsuario SET nombre='"+edNombre.getText().toString()+"', codigo="+Integer.parseInt(edCodigo.getText().toString())+" where codigo="+codigo[0]+"");
-                }
-            }
-        });
 
         btnFin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,5 +81,6 @@ public class ModificarActivity extends AppCompatActivity {
         }
 
     }
+
 
 }

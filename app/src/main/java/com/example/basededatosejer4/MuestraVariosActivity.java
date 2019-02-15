@@ -8,19 +8,18 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
 
-public class ModificarActivity extends AppCompatActivity {
+public class MuestraVariosActivity extends AppCompatActivity {
 
     private String BDname;
     private int BDversion;
     private SQLiteDatabase BDusuarios;
-    private Button btnFin, btnMod;
-    private EditText edCodigo, edNombre;
-    private Spinner spUsers;
+    private Button btnFin;
+    private ListView lvUsers;
 
     ArrayList<String> listaPersonas;
     ArrayList<Usuario> personasList;
@@ -28,13 +27,10 @@ public class ModificarActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_modificar);
+        setContentView(R.layout.activity_muestra_varios);
 
         btnFin = findViewById(R.id.btnAcFin);
-        btnMod = findViewById(R.id.btnAcModificar);
-        edCodigo = findViewById(R.id.edCodigo);
-        edNombre = findViewById(R.id.edNombre);
-        spUsers = findViewById(R.id.UsuarioSpinner);
+        lvUsers = findViewById(R.id.lv);
 
         BDname = "BDusuarios";
         BDversion = 1;
@@ -45,24 +41,7 @@ public class ModificarActivity extends AppCompatActivity {
 
         ArrayAdapter<CharSequence> adaptador = new ArrayAdapter
                 (this, android.R.layout.simple_spinner_item, listaPersonas);
-        spUsers.setAdapter(adaptador);
-
-        btnMod.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if (edNombre.getText().toString().equals("")) {
-                    edNombre.setHint("Introduce un nombre");
-                } else if (edCodigo.getText().toString().equals("")) {
-                    edCodigo.setHint("Introduce un codigo");
-                } else {
-                    String text = spUsers.getSelectedItem().toString();
-                    String[] codigo = text.split("(?=\\s)");
-                    Log.i("spinner", edNombre.getText().toString());
-                    BDusuarios.execSQL("UPDATE tUsuario SET nombre='"+edNombre.getText().toString()+"', codigo="+Integer.parseInt(edCodigo.getText().toString())+" where codigo="+codigo[0]+"");
-                }
-            }
-        });
+        lvUsers.setAdapter(adaptador);
 
         btnFin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,12 +74,9 @@ public class ModificarActivity extends AppCompatActivity {
 
     private void obtenerLista() {
         listaPersonas = new ArrayList<String>();
-        listaPersonas.add("Seleccione");
 
         for (int i = 0; i < personasList.size(); i++) {
             listaPersonas.add(personasList.get(i).getCodigo() + " - " + personasList.get(i).getNombre());
         }
-
     }
-
 }
